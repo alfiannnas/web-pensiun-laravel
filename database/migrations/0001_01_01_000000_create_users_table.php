@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('tb_datapensiun', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->datetime('tanggal_lahir');
+            $table->date('tanggal_lahir');
             $table->string('jabatan');
             $table->string('pangkat');
             $table->string('golongan');
-            $table->datetime('tanggal_pensiun');
+            $table->date('tanggal_pensiun');
+            $table->timestamps();
         });
     }
 

@@ -13,6 +13,10 @@
       
       <!-- Aos Animation Css -->
       <link rel="stylesheet" href="assets/vendor/aos/dist/aos.css" />
+
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
       
       <!-- Hope Ui Design System Css -->
       <link rel="stylesheet" href="assets/css/hope-ui.min.css?v=2.0.0" />
@@ -31,6 +35,7 @@
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
       <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
       
       
@@ -228,6 +233,50 @@
       </div>
       <h2 class="text-center mt-5">Data Pensiun</h2>
       <div class="container-fluid w-75">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Data</button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('data-pensiun.store') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nama" class="col-form-label">Nama:</label>
+                        <input type="text" class="form-control" id="nama" name="nama">
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
+                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="jabatan" class="col-form-label">Jabatan:</label>
+                        <input type="text" class="form-control" id="jabatan" name="jabatan">
+                    </div>
+                    <div class="form-group">
+                        <label for="pangkat" class="col-form-label">Pangkat:</label>
+                        <input type="text" class="form-control" id="pangkat" name="pangkat">
+                    </div>
+                    <div class="form-group">
+                        <label for="golongan" class="col-form-label">Golongan:</label>
+                        <input type="text" class="form-control" id="golongan" name="golongan">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
       <table id="example" class="table table-striped" style="width:100%">
     <thead>
     <tr>
@@ -238,7 +287,6 @@
             <th>Pangkat</th>
             <th>Golongan</th>
             <th>Tanggal Pensiun</th>
-            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -250,28 +298,8 @@
         <td>{{ $row->jabatan }}</td>
         <td>{{ $row->pangkat }}</td>
         <td>{{ $row->golongan }}</td>
-        <td>
-            <!-- Tombol Edit -->
-            <a href="{{ route('edit', ['id' => $row->id]) }}" class="btn btn-primary">Edit</a>
-            
-            <!-- Tombol Delete -->
-            <form action="{{ route('delete', ['id' => $row->id]) }}" method="POST" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
 
-        @php
-            // Hitung umur
-            $tgl_lahir = new DateTime($row->tanggal_lahir);
-            $tgl_hari_ini = new DateTime('today');
-            $umur = $tgl_lahir->diff($tgl_hari_ini)->y;
-
-            // Tetapkan tanggal pensiun pada umur 60 tahun
-            $tanggal_pensiun = date('Y-m-d', strtotime('+60 years', strtotime($row->tanggal_lahir)));
-        @endphp
-        <td>{{ $tanggal_pensiun }}</td>
+        <td>{{ $row->tanggal_pensiun }}</td>
     </tr>
     @endforeach
 
@@ -324,6 +352,10 @@
     <script>
 new DataTable('#example');
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 
     
   </body>

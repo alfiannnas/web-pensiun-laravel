@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PensiunController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\DataPensiunController;
 
 Route::get('/', function () {
     return view('login');
@@ -25,6 +26,13 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Route for logout
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+
+
+Route::post('/datapensiun', [DataPensiunController::class, 'store'])->name('data-pensiun.store');
+
+
+
 
 
 
