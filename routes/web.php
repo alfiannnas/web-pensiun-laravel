@@ -43,3 +43,10 @@ Route::delete('/datapensiun/{id}', [DataPensiunController::class, 'destroy'])->n
 
 
 
+
+
+
+
+
+
+

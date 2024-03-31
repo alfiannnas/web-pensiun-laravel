@@ -33,4 +33,27 @@ class DataPensiunController extends Controller
 
         return redirect()->route('datapensiun')->with('success', 'Data has been deleted successfully');
     }
+
+    public function edit($id)
+    {
+        $dataPensiun = DataPensiun::findOrFail($id);
+        return view('datapensiun.edit', compact('dataPensiun'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dataPensiun = DataPensiun::findOrFail($id);
+
+        $dataPensiun->update($request->all());
+
+        return redirect()->route('datapensiun.index')->with('success', 'DataPensiun has been updated successfully!');
+    }
+
+
+    
+    
+
+    
+    
+    
 }

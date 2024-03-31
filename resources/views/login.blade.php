@@ -11,7 +11,7 @@
   </head>
   <body class="bg-image-login" style="background-image: url('{{ asset('assets/images/bg-login.png') }}');">
     <div class="position-logo" id="bg">
-      <img src="img/LOGO KARTA YP.png" alt="Logo Sistem Informasi!" width="125" />
+      <img src="{{ asset('assets/images/logo-full.png') }}" alt="Logo Sistem Informasi!" width="125" />
     </div>
     <div class="radius">
       <div class="container-judul mb-5" style="max-width: 900px">
@@ -25,11 +25,11 @@
         <label for="email">Email address</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
     </div>
-    <div class="form-group">
+    <div class="form-group mt-3">
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-primary px-5 mb-5 w-100">LOGIN</button>
+    <button type="submit" class="btn btn-primary px-5 mb-5 w-100 mt-3">LOGIN</button>
 </form>
 
       </div>
