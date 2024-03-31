@@ -287,6 +287,7 @@
             <th>Pangkat</th>
             <th>Golongan</th>
             <th>Tanggal Pensiun</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -298,8 +299,23 @@
         <td>{{ $row->jabatan }}</td>
         <td>{{ $row->pangkat }}</td>
         <td>{{ $row->golongan }}</td>
-
         <td>{{ $row->tanggal_pensiun }}</td>
+        <td>
+            <!-- Tombol Edit -->
+            <a href="" class="btn btn-primary">Edit</a>
+            
+            <!-- Tombol Delete -->
+    <!-- Display data here -->
+
+    <form action="{{ route('datapensiun.destroy', $row->id) }}" method="POST" style="display: inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+
+
+        </td>
     </tr>
     @endforeach
 

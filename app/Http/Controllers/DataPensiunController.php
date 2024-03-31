@@ -24,4 +24,13 @@ class DataPensiunController extends Controller
         // Redirect atau kembalikan response sesuai kebutuhan
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
+
+
+    public function destroy($id)
+    {
+        $dataPensiun = DataPensiun::findOrFail($id);
+        $dataPensiun->delete();
+
+        return redirect()->route('datapensiun')->with('success', 'Data has been deleted successfully');
+    }
 }

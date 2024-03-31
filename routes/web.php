@@ -33,6 +33,12 @@ Route::post('/datapensiun', [DataPensiunController::class, 'store'])->name('data
 
 
 
+Route::delete('/datapensiun/{id}', [DataPensiunController::class, 'destroy'])->name('datapensiun.destroy');
+
+
+
+
+
 
 
 
